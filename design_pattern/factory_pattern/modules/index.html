@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .signal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 500px;
+      height: 500px;
+      margin: -250px 0 0 -250px;
+      box-shadow: 1px 3px 5px #999;
+    }
+
+    .signal header {
+      height: 50px;
+      background-color: #ccc;
+      color: #fff;
+      padding: 0 15px 0 15px;
+      box-sizing: border-box;
+      font-size: 18px;
+      line-height: 50px;
+      width: 100%;
+    }
+
+    .signal header.success {
+      background-color: lightgreen;
+    }
+
+    .signal header.warning {
+      background-color: orange;
+    }
+
+    .signal header.fail {
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="signal">
+      <header>Signal</header>
+    </div>
+    <div class="btn-group">
+      <button data-status="success">
+        Success
+      </button>
+      <button data-status="warning">
+        Warning
+      </button>
+      <button data-status="fail">
+        Fail
+      </button>
+    </div>
+  </div>
+
+  <script type="module" src="./factory/index.js"></script>
+</body>
+
+</html>
