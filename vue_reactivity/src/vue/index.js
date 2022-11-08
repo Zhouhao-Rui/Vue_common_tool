@@ -1,5 +1,7 @@
 import { initState } from './init'
 import { compileToRender } from '../compiler'
+import { LifeCycleMixin, mountComponent } from './lifecycle';
+import { RenderMixIn } from '../vdom';
 
 function Vue(options) {
   this._init(options)
@@ -11,13 +13,16 @@ Vue.prototype._init = function (options) {
 
   vm.$options = options;
 
+  initState(vm);
+
   if (vm.$options.el) {
     // mount function to mount the el element
     vm.$mount(vm.$options.el);
   }
 
-  initState(vm);
 }
+RenderMixIn(Vue);
+LifeCycleMixin(Vue);
 
 Vue.prototype.$mount = function (el) {
   const vm = this;
@@ -35,6 +40,7 @@ Vue.prototype.$mount = function (el) {
     const render = compileToRender(template);
     options.render = render;
   }
+  mountComponent(this)
 }
 
 export default Vue

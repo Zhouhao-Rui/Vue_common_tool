@@ -4,6 +4,8 @@ let vm = new Vue({
   el: '#app',
   data() {
     return {
+      name: 'rzh',
+      age: 18,
       title: 'List',
       classNum: 3,
       teachers: [

@@ -1,6 +1,12 @@
+import { generateCode } from "./generate";
+
 export function compileToRender(template) {
   const ast = parseHTMLToAST(template);
-  console.log(ast)
+  const code = generateCode(ast);
+  const render = new Function(`
+    with(this) {return ${code}}
+  `)
+  return render;
 }
 
 /**
