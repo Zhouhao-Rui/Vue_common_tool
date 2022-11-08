@@ -12,7 +12,6 @@ function Observer(data) {
     data.__proto__ = arrMethods;
     // recursive
     observeArr(data);
-    console.log(data)
   }
 }
 
