@@ -90,3 +90,6 @@
   \_c: createElement(tag, props, children)
   \_v: createTextNode(text)
   \_s: change the variable to the plain text (object -> stringfy, basic type -> "")
+
+- **How to patch**
+  Here the full patch with vdom diff didn't apply, just remove the whole element and rerendering.

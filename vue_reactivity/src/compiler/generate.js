@@ -71,7 +71,6 @@ function formatChildren(children) {
 
 export function generateCode(el) {
   let children = formatChildren(el.children);
-  let code = `_c("${el.tag}", ${el.attrs.length > 0 ? formatAttrs(el.attrs) : 'undefined'}, ${children ? `${children}` : ''})`
-  console.log(code)
+  let code = `_c("${el.tag}", ${el.attrs.length > 0 ? formatAttrs(el.attrs) : 'undefined'}, ${children ? `[${children}]` : ''})`
   return code;
 }
