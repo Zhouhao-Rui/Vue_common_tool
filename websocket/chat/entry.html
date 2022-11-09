@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <label for="name">Please input name</label>
+  <input type="text" name="name" class="name">
+  <button class="btn">Click</button>
+  <script>
+    const btnEl = document.querySelector('.btn');
+    const inputName = document.querySelector('.name');
+    btnEl.addEventListener('click', (e) => {
+      const val = inputName.value;
+      if (val.length < 6) {
+        alert('Your name cannot be shorter than 6 chars')
+        return;
+      }
+      // store the info
+      window.localStorage.setItem('username', val);
+      // turn to index.html
+      window.location.href = '/index.html';
+    }, false)
+  </script>
+</body>
+
+</html>

@@ -3,8 +3,6 @@ import { createElement, createTextVnode } from './utils'
 export function RenderMixIn(Vue) {
   // createElement
   Vue.prototype._c = function () {
-    console.log('aaa')
-    console.log(createElement(...arguments))
     return createElement(...arguments);
   }
   Vue.prototype._s = function (value) {

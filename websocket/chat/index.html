@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" class="message" placeholder="input message">
+  <button class="send">Send</button>
+  <ul class="list"></ul>
+
+  <script>
+    const listEl = document.querySelector('.list');
+    const messageEl = document.querySelector('.message');
+    const sendEl = document.querySelector('.send');
+
+    const socket = new WebSocket('ws://localhost:3000');
+
+    let username = ''
+
+    socket.addEventListener('open', handleOpen)
+
+    socket.addEventListener('close', handleClose)
+
+    socket.addEventListener('error', handleError)
+
+    socket.addEventListener('message', handleMessage)
+
+    sendEl.addEventListener('click', (e) => {
+      console.log('send...')
+      socket.send(JSON.stringify({
+        username,
+        message: messageEl.value,
+        date: new Date()
+      }))
+    })
+
+    function handleOpen() {
+      console.log('open...')
+      username = window.localStorage.getItem('username');
+      if (!username) {
+        window.location.href = '/entry.html';
+      }
+
+    }
+
+    function handleClose() {
+      console.log('close...')
+    }
+
+    function handleError() {
+      console.log('error...')
+    }
+
+    function handleMessage(message) {
+      let message_data = JSON.parse(message.data);
+      let liChildEl = document.createElement('li')
+      liChildEl.className = message.data.date + ''
+      liChildEl.innerHTML = `
+        <span>${message_data.username}</span>
+        <span style="padding: 0 30px">${message_data.message}</span>
+        <span>${message_data.date}</span>
+      `
+      listEl.appendChild(liChildEl)
+    }
+  </script>
+</body>
+
+</html>
