@@ -2,12 +2,18 @@
   <div class="carousel">
     <div class="inner">
       <slot></slot>
+      <Dot
+        :imgNum="imgNum"
+        :currentIndex="currentIndex"
+        @updateCurrentIndex="handleDotCurrentIndex"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import { getCurrentScope, reactive, toRef } from "@vue/reactivity";
+import Dot from "./dot";
 import {
   onMounted,
   onBeforeUnmount,
@@ -33,13 +39,11 @@ export default {
       }
     };
 
-    let carouselInstance = null;
-    let imgNum = 0;
+    let carouselInstance = getCurrentInstance();
+    let imgNum = carouselInstance.slots.default()[0].children.length;
 
     onMounted(() => {
       // find the instance and slot
-      carouselInstance = getCurrentInstance();
-      imgNum = carouselInstance.slots.default()[0].children.length;
       autoPlay();
     });
 
@@ -68,8 +72,14 @@ export default {
     };
 
     const currentIndex = toRef(state, "currentIndex");
+
+    const handleDotCurrentIndex = (newIndex) => {
+      currentIndex.value = newIndex;
+    };
     return {
       currentIndex,
+      imgNum,
+      handleDotCurrentIndex,
     };
   },
   props: {
@@ -94,6 +104,10 @@ export default {
       default: true,
     },
   },
+  components: {
+    Dot,
+  },
+  emits: ["updateCurrentIndex"],
 };
 </script>
 
