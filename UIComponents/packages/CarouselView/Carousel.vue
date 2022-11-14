@@ -3,9 +3,16 @@
     <div class="inner">
       <slot></slot>
       <Dot
+        v-show="showPointers"
         :imgNum="imgNum"
         :currentIndex="currentIndex"
         @updateCurrentIndex="handleDotCurrentIndex"
+      />
+      <Director
+        v-show="showDirectors"
+        :imgNum="imgNum"
+        :currentIndex="currentIndex"
+        @changeCurrentIndex="handleDirectorCurrentIndex"
       />
     </div>
   </div>
@@ -14,6 +21,7 @@
 <script>
 import { getCurrentScope, reactive, toRef } from "@vue/reactivity";
 import Dot from "./dot";
+import Director from "./director";
 import {
   onMounted,
   onBeforeUnmount,
@@ -76,10 +84,15 @@ export default {
     const handleDotCurrentIndex = (newIndex) => {
       currentIndex.value = newIndex;
     };
+
+    const handleDirectorCurrentIndex = (newIndex) => {
+      currentIndex.value = newIndex;
+    };
     return {
       currentIndex,
       imgNum,
       handleDotCurrentIndex,
+      handleDirectorCurrentIndex,
     };
   },
   props: {
@@ -106,8 +119,9 @@ export default {
   },
   components: {
     Dot,
+    Director,
   },
-  emits: ["updateCurrentIndex"],
+  emits: ["updateCurrentIndex", "changeCurrentIndex"],
 };
 </script>
 
