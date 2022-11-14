@@ -1,10 +1,10 @@
 <template>
-  <transfer :data="mock_data" right-title="chosen" />
+  <transfer :data="mock_data_transfer" right-title="chosen" />
 </template>
 
 <script setup>
-import { mock_data } from "./mock";
+import { mock_data_transfer } from "./mock";
 </script>
 
-<style lang="scss">
+<style>
 </style>

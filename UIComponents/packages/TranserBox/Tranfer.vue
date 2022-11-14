@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <select @change="setTargetIndex($event.target.value)">
+      <select @change="handleSelect">
         <option v-for="(title, index) of options" :key="index" :value="index">
           {{ title }}
         </option>
@@ -12,37 +12,50 @@
         <h1 class="list-title">{{ listTitle }}</h1>
         <div
           v-for="item of leftListData"
-          key="item.id"
+          :key="item.id"
           :class="['list-item', item.disabled ? 'disabled' : '']"
         >
           <input
             type="checkbox"
             :disabled="item.disabled"
             :id="'checkbox' + item.id"
+            @change="handleLeftCheckboxClick($event, item)"
           />
           <label :for="'checkbox' + item.id">{{ item.name }}</label>
         </div>
       </div>
       <div class="box button-group">
-        <button>&lt;</button>
-        <button>&gt;</button>
+        <button disabled ref="leftBtn" @click="handleLeftBtnClick">&lt;</button>
+        <button disabled ref="rightBtn" @click="handleRightBtnClick">
+          &gt;
+        </button>
       </div>
       <div class="box right-list">
         <h1 class="list-title">{{ rightTitle }}</h1>
-        <div></div>
+        <div v-for="item of rightListData" :key="item.id" class="list-item">
+          <input
+            type="checkbox"
+            :disabled="item.disabled"
+            :id="'checkbox' + item.id"
+            @change="handleRightCheckboxClick($event, item)"
+          />
+          <label :for="'checkbox' + item.id">{{ item.name }}</label>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import {
   useTargetIndex,
   useComputedTitle,
   useComputedLeftList,
   useRightListData,
-} from "../hooks";
+  useActiveLeftItems,
+  useActiveRightItems,
+} from "../hooks/transfer";
 const props = defineProps({
   data: {
     type: Array,
@@ -60,15 +73,82 @@ const [targetIndex, setTargetIndex] = useTargetIndex(0);
 
 const { listTitle } = useComputedTitle(props.data, targetIndex);
 
-const [rightListData, addRightListData, removeRightListData] = useRightListData(
-  []
-);
+const [
+  rightListData,
+  addRightListData,
+  removeRightListData,
+  clearRightListData,
+] = useRightListData([]);
 
 const { leftListData } = useComputedLeftList(
   props.data,
   targetIndex,
   rightListData
 );
+
+const leftBtn = ref(null);
+const rightBtn = ref(null);
+
+const [
+  activeLeftItems,
+  addActiveLeftItems,
+  removeActiveLeftItems,
+  clearActiveLeftItems,
+] = useActiveLeftItems([]);
+
+// handle left checkbox click
+const handleLeftCheckboxClick = (e, item) => {
+  let isChecked = e.target.checked;
+  // change active items
+  isChecked ? addActiveLeftItems(item) : removeActiveLeftItems(item);
+  // button color
+  activeLeftItems.value.length
+    ? (rightBtn.value.disabled = false)
+    : (rightBtn.value.disabled = true);
+};
+
+// handle right btn click
+const handleRightBtnClick = () => {
+  addRightListData(activeLeftItems);
+  // remove all active items
+  clearActiveLeftItems();
+  rightBtn.value.disabled = true;
+};
+
+const [
+  activeRightItems,
+  addActiveRightItems,
+  removeActiveRightItems,
+  clearActiveRightItems,
+] = useActiveRightItems([]);
+
+// handle right checkbox change
+const handleRightCheckboxClick = (e, item) => {
+  let isChecked = e.target.checked;
+  // change active items
+  isChecked ? addActiveRightItems(item) : removeActiveRightItems(item);
+  // button color
+  activeRightItems.value.length
+    ? (leftBtn.value.disabled = false)
+    : (leftBtn.value.disabled = true);
+};
+
+// handle left btn click
+const handleLeftBtnClick = () => {
+  removeRightListData(activeRightItems);
+  // remove all active items
+  clearActiveLeftItems();
+  leftBtn.value.disabled = true;
+};
+
+// handle select options
+const handleSelect = (e) => {
+  setTargetIndex(e.target.value);
+  // reset everything
+  clearActiveLeftItems();
+  clearActiveRightItems();
+  clearRightListData();
+};
 </script>
 
 <style>
@@ -115,7 +195,7 @@ const { leftListData } = useComputedLeftList(
   margin-left: 0.5rem;
 }
 .button-group button:disabled {
-  opacity: 0.6;
+  opacity: 0.3;
 }
 .list-item {
   display: flex;

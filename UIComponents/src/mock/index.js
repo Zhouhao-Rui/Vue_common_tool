@@ -1,4 +1,4 @@
-export const mock_data = [
+export const mock_data_transfer = [
   {
     title: 'UK',
     data: [
