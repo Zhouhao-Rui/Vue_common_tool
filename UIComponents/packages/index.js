@@ -1,7 +1,11 @@
 import Tranfer from './TranserBox/Tranfer'
+import Carousel from './CarouselView/Carousel'
+import ViewItem from './CarouselView/item'
 
 const components = {
-  'transfer': Tranfer
+  'transfer': Tranfer,
+  'carousel': Carousel,
+  'viewItem': ViewItem
 }
 
 // global

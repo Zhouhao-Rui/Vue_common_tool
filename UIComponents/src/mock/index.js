@@ -106,3 +106,19 @@ export const mock_data_transfer = [
     ]
   }
 ]
+
+
+// vite must use this URL object, cannot use require
+export const get_image_url = () => {
+  return new URL('../assets/img', import.meta.url).href;
+}
+
+export const carousel_imgs = [
+  '/1.jpg',
+  '/2.jpg',
+  '/3.jpg',
+  '/4.jpg',
+  '/5.jpg',
+  '/6.jpg',
+  '/7.jpg',
+]

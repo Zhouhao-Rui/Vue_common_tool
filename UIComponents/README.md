@@ -24,3 +24,10 @@ example:
 
 ![Transfer Example](./docs/transfer_example.png)
 ![Transfer Example 2](./docs/transfer_example_2.png)
+
+### Carousel
+
+How to realize carousel in Native Javascript: add the first pictures at last (one, two, three, one...)
+How to realize carousel with Vue component: dynamic component or v-if (?). All the carousel images are in the same position (position: absolute), every time to alternate the previous shown component. Sounds fine !
+
+- Very important API: getCurrentInstance(), because the props cannot be accessed in slot.
