@@ -33,3 +33,9 @@ How to realize carousel with Vue component: dynamic component or v-if (?). All t
 - Very important API: getCurrentInstance(), because the props cannot be accessed in slot.
 
 ![Carousel Example](./docs/carousel.png)
+
+### Magnifier
+
+Create two images, one is static image and one is magnifier. Use Position relative and position absolute to define the hierarchies. Then use the custom directives to control the DOM operations. mouseover, mousemove and x, y changing.
+
+![Magnifier Example](./docs/magnifier.png)
