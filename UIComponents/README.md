@@ -39,3 +39,8 @@ How to realize carousel with Vue component: dynamic component or v-if (?). All t
 Create two images, one is static image and one is magnifier. Use Position relative and position absolute to define the hierarchies. Then use the custom directives to control the DOM operations. mouseover, mousemove and x, y changing.
 
 ![Magnifier Example](./docs/magnifier.png)
+
+### Rating
+
+Use the custom directives to build rating bar, listen on the mouse moving and bind the rating number to the directive.
+![Rating Example](./docs/rating.png)

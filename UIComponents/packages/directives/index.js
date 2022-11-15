@@ -59,3 +59,39 @@ export const magnifier = {
     init();
   }
 }
+
+export const rate = {
+  mounted(el, binding) {
+    const oRatingWrapper = el;
+    const oRatingItems = el.querySelectorAll('.star');
+    // enter the rating wrapper
+    el.addEventListener('mouseenter', function (e) {
+      oRatingItems.forEach((oItem, index) => {
+        // hover
+        oItem.onmouseover = function (e) {
+          e.stopPropagation();
+          // update rate
+          binding.value.setRate(index + 1);
+        };
+        // click
+        oItem.onclick = function (e) {
+          e.stopPropagation();
+          // update rate;
+          binding.value.setRate(index + 1);
+        }
+      })
+    }, false)
+    // leave the rating wrapper
+    el.addEventListener('mouseleave', function (e) {
+      // if less than 1, be zero
+      if (binding.value.getRate() <= 1) {
+        binding.value.setRate(0);
+      }
+      // remove all listener, or will memory leak
+      oRatingItems.forEach((oItem, index) => {
+        oItem.onmouseover = null;
+        oItem.onclick = null;
+      })
+    })
+  }
+}
