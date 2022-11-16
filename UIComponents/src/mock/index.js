@@ -122,3 +122,110 @@ export const carousel_imgs = [
   '/6.jpg',
   '/7.jpg',
 ]
+
+export const mock_data_tree = [
+  {
+    id: 0,
+    text: 'Title 1',
+    children: [
+      {
+        id: 1,
+        pid: 0,
+        text: 'Title 1-1',
+        children: [
+          {
+            id: 2,
+            pid: 1,
+            text: 'Title 1-1-1',
+          },
+          {
+            id: 3,
+            pid: 1,
+            text: 'Title 1-1-2'
+          }
+        ]
+      },
+      {
+        id: 4,
+        pid: 0,
+        text: 'Title 1-2',
+        children: [
+          {
+            id: 5,
+            pid: 4,
+            text: 'Title 1-2-1'
+          }
+        ]
+      },
+      {
+        id: 6,
+        pid: 0,
+        text: 'Title 1-3'
+      }
+    ],
+  },
+  {
+    id: 7,
+    text: 'Title 2',
+    children: [
+      {
+        id: 8,
+        pid: 7,
+        text: 'Title 2-1',
+        children: [
+          {
+            id: 9,
+            pid: 8,
+            text: 'Title 2-1-1'
+          }
+        ]
+      },
+      {
+        id: 10,
+        pid: 7,
+        text: 'Title 2-2'
+      },
+      {
+        id: 11,
+        pid: 7,
+        text: 'Title 2-3',
+        children: [
+          {
+            id: 12,
+            pid: 11,
+            text: 'Title 2-3-1'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 13,
+    pid: 0,
+    text: 'Title 3',
+    children: [
+      {
+        id: 14,
+        pid: 13,
+        text: 'Title 3-1',
+        children: [
+          {
+            id: 15,
+            pid: 14,
+            text: 'Title 3-3-1'
+          },
+          {
+            id: 16,
+            pid: 14,
+            text: 'Title 3-3-2'
+          },
+          {
+            id: 17,
+            pid: 14,
+            text: 'Title 3-3-3'
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -25,9 +25,12 @@
       :imgAlt="imgAlt"
     />
   </div> -->
-  <div class="wrapper">
+
+  <!-- <div class="wrapper">
     <rate :num="num" :size="5" @getStarNum="getStarNum" format="lg" />
-  </div>
+  </div> -->
+
+  <tree :data="mock_data_tree" />
 </template>
 
 <script setup>
@@ -60,12 +63,14 @@ import { ref } from "@vue/reactivity";
 //   imgAlt,
 // } = toRefs(state);
 
-let num = ref(2);
-const getStarNum = (newNum) => {
-  num = newNum;
-  console.log(num);
-  // TODO side effect
-};
+// let num = ref(2);
+// const getStarNum = (newNum) => {
+//   num = newNum;
+//   console.log(num);
+//   // TODO side effect
+// };
+
+import { mock_data_tree } from "./mock";
 </script>
 
 <style scoped>
@@ -79,10 +84,10 @@ const getStarNum = (newNum) => {
   margin: 0 auto;
 } */
 
-.wrapper {
+/* .wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-}
+} */
 </style>

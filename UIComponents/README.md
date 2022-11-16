@@ -44,3 +44,8 @@ Create two images, one is static image and one is magnifier. Use Position relati
 
 Use the custom directives to build rating bar, listen on the mouse moving and bind the rating number to the directive.
 ![Rating Example](./docs/rating.png)
+
+### Tree
+
+Use the tree data structure and recursive components to realize the multi-layer components
+![Tree Example](./docs/tree.png)
