@@ -30,7 +30,24 @@
     <rate :num="num" :size="5" @getStarNum="getStarNum" format="lg" />
   </div> -->
 
-  <tree :data="mock_data_tree" />
+  <!-- <tree :data="mock_data_tree" /> -->
+
+  <modal
+    :show="true"
+    :width="360"
+    :borderRadius="10"
+    primarycolor="#007bff"
+    title="This is a test modal"
+    fontcolor="#fff"
+    contentText="This is a test...This is a test...This is a test...This is a test..."
+    contentTextColor="#333"
+    position="center"
+    :btnGroupShow="true"
+    confirmText="Confirm"
+    cancelText="Cancel"
+    @confirm="modalConfirm"
+    @cancel="modalClose"
+  />
 </template>
 
 <script setup>
@@ -70,7 +87,15 @@ import { ref } from "@vue/reactivity";
 //   // TODO side effect
 // };
 
-import { mock_data_tree } from "./mock";
+// import { mock_data_tree } from "./mock";
+
+const modalConfirm = () => {
+  console.log("confirm");
+};
+
+const modalClose = () => {
+  console.log("cancel");
+};
 </script>
 
 <style scoped>

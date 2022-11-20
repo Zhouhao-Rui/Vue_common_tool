@@ -3,7 +3,8 @@ import Carousel from './CarouselView/Carousel'
 import ViewItem from './CarouselView/item'
 import Magnifier from './MagnifierView/Magnifier'
 import Rate from './RateView/Rate';
-import Tree from './TreeView/Tree'
+import Tree from './TreeView/Tree';
+import Modal from './ModalView/Modal';
 
 const components = {
   'transfer': Tranfer,
@@ -11,7 +12,8 @@ const components = {
   'viewItem': ViewItem,
   'magnifier': Magnifier,
   'rate': Rate,
-  'tree': Tree
+  'tree': Tree,
+  'modal': Modal
 }
 
 // global

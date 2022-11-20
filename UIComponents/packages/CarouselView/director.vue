@@ -43,7 +43,7 @@ const handleClick = (direction) => {
 };
 </script>
 
-<style>
+<style scoped>
 .btns {
   width: 100%;
   display: flex;
