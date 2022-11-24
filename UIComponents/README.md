@@ -51,3 +51,11 @@ Use the custom directives to build rating bar, listen on the mouse moving and bi
 Use the tree data structure and recursive components to realize the multi-layer components.
 
 ![Tree Example](./docs/tree.png)
+
+### Sub Menu & Search Input
+
+Simple.
+
+![SubMenu Example](./docs/sub_menu_1.png)
+
+![SubMenu Example](./docs/sub_menu_2.png)
