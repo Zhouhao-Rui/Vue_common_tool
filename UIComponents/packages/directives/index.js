@@ -95,3 +95,45 @@ export const rate = {
     })
   }
 }
+
+export const selectFocus = {
+  mounted(el, binding) {
+    console.log(binding)
+    const oSelectorInput = el.querySelector('.selector-input');
+    const oInput = oSelectorInput.querySelector('.input');
+    const oPlaceHolder = oSelectorInput.querySelector('.placeholder');
+    const oIcon = oSelectorInput.querySelector('.icon-search');
+    const oMenu = el.querySelector('.selector-menu');
+
+    bindEvents();
+
+    function bindEvents() {
+      console.log('aaa')
+      oInput.addEventListener('focus', handleFocus, false)
+
+      oInput.addEventListener('blur', handleBlur, false)
+    }
+
+    function handleFocus() {
+      oPlaceHolder.style.display = 'none';
+      oIcon.className = 'bi bi-search icon-search';
+      setTimeout(() => {
+        oMenu.style.display = 'block'
+      }, 200)
+    }
+
+    function handleBlur() {
+      oPlaceHolder.style.display = 'block';
+      oIcon.className = 'bi bi-chevron-down icon-search'
+      setTimeout(() => {
+        oMenu.style.display = 'none'
+        if (oInput.value.length === 0) {
+          oPlaceHolder.style.display = 'block'
+        }
+        oPlaceHolder.style.display = 'none'
+      }, 100)
+    }
+  },
+
+
+}

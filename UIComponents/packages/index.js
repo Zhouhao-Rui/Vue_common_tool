@@ -5,6 +5,7 @@ import Magnifier from './MagnifierView/Magnifier'
 import Rate from './RateView/Rate';
 import Tree from './TreeView/Tree';
 import Modal from './ModalView/Modal';
+import Selector from './SelectorView/Selector';
 
 const components = {
   'transfer': Tranfer,
@@ -13,7 +14,8 @@ const components = {
   'magnifier': Magnifier,
   'rate': Rate,
   'tree': Tree,
-  'modal': Modal
+  'modal': Modal,
+  'selector': Selector
 }
 
 // global

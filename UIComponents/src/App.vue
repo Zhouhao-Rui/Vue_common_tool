@@ -32,7 +32,7 @@
 
   <!-- <tree :data="mock_data_tree" /> -->
 
-  <modal
+  <!-- <modal
     :show="true"
     :width="360"
     :borderRadius="10"
@@ -47,7 +47,11 @@
     cancelText="Cancel"
     @confirm="modalConfirm"
     @cancel="modalClose"
-  />
+  /> -->
+
+  <div class="container">
+    <selector placeholder="select Etc" :items="mock_selector_items" @getItemValue="handleItemValue" />
+  </div>
 </template>
 
 <script setup>
@@ -89,13 +93,19 @@ import { ref } from "@vue/reactivity";
 
 // import { mock_data_tree } from "./mock";
 
-const modalConfirm = () => {
-  console.log("confirm");
-};
+// const modalConfirm = () => {
+//   console.log("confirm");
+// };
 
-const modalClose = () => {
-  console.log("cancel");
-};
+// const modalClose = () => {
+//   console.log("cancel");
+// };
+
+import { mock_selector_items } from './mock'
+
+const handleItemValue = (val) => {
+  console.log(val);
+}
 </script>
 
 <style scoped>
@@ -115,4 +125,12 @@ const modalClose = () => {
   align-items: center;
   height: 100vh;
 } */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
 </style>

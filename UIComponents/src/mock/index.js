@@ -229,3 +229,56 @@ export const mock_data_tree = [
     ]
   }
 ]
+
+export const mock_selector_items = [
+  {
+    id: 1,
+    value: 'google',
+    text: 'Google'
+  },
+  {
+    id: 2,
+    value: 'microsoft',
+    text: 'Microsoft'
+  },
+  {
+    id: 3,
+    value: 'amazon',
+    text: 'Amazon'
+  },
+  {
+    id: 4,
+    value: 'meta',
+    text: 'Meta'
+  },
+  {
+    id: 5,
+    value: 'bytedance',
+    text: 'Bytedance'
+  },
+  {
+    id: 6,
+    value: 'ebay',
+    text: 'Ebay'
+  },
+  {
+    id: 7,
+    value: 'coupang',
+    text: 'Coupang'
+  },
+  {
+    id: 8,
+    value: 'tesla',
+    text: 'Tesla'
+  },
+  {
+    id: 9,
+    value: 'uber',
+    text: 'Uber'
+  },
+  {
+    id: 10,
+    value: 'apple',
+    text: 'Apple'
+  }
+]
