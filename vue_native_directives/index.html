@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <div>Here is a test...</div>
+    <div v-if="count > 0">
+      <p>Bigger than 0</p>
+    </div>
+    <div v-else-if="count == 0">
+      <p>Equals to 0</p>
+    </div>
+    <div v-else>
+      <p>Smaller than 0</p>
+    </div>
+    <div v-if="count == 0">
+      Equals to 0
+    </div>
+    <div v-else>
+      Not equals to 0
+    </div>
+    <div v-show="isShow">
+      Hello I'm show
+    </div>
+  </div>
+  <script src="index.js"></script>
+</body>
+
+</html>
